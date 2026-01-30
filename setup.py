@@ -4,7 +4,7 @@ from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
 this_dir = os.path.dirname(os.path.abspath(__file__))
 kernels_dir = os.path.join(this_dir, "kernels")
-print (kernels_dir)
+
 setup(
     name="fastcv",
     ext_modules=[
