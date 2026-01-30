@@ -1,6 +1,10 @@
+import os
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 
+this_dir = os.path.dirname(os.path.abspath(__file__))
+kernels_dir = os.path.join(this_dir, "kernels")
+print (kernels_dir)
 setup(
     name="fastcv",
     ext_modules=[
@@ -14,6 +18,9 @@ setup(
                 "kernels/erosion.cu",
                 "kernels/module.cpp",
                 "kernels/medianBlur.cu"
+            ],
+            include_dirs = [
+                kernels_dir
             ],
             extra_compile_args={"cxx": ["-O2"],
                                 'nvcc': ["--expt-extended-lambda"]},

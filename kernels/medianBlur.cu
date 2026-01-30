@@ -1,3 +1,4 @@
+//#include "nvtx3.hpp"
 #define NOMINMAX
 
 #include <iostream>
@@ -68,8 +69,8 @@ __global__ void median_blur_single_channel(const pixel_type* __restrict__ input,
         const int shared_mem_y = ty + radius;
         
         int k = 0;
-        for (int dy = -radius; dy <= radius; dy++) {
-            for (int dx = -radius; dx <= radius; dx++) {
+        for (int dy = -radius; dy <= radius; ++dy) {
+            for (int dx = -radius; dx <= radius; ++dx) {
                 window[k++] = shared_mem[shared_mem_y + dy][shared_mem_x + dx];
             }
         }
