@@ -13,8 +13,10 @@ setup(
                 "kernels/dilation.cu",
                 "kernels/erosion.cu",
                 "kernels/module.cpp",
+                "kernels/medianBlur.cu"
             ],
-            extra_compile_args={"cxx": ["-O2"]},
+            extra_compile_args={"cxx": ["-O2"],
+                                'nvcc': ["--expt-extended-lambda"]},
         ),
     ],
     cmdclass={"build_ext": BuildExtension},
